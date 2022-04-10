@@ -19,6 +19,10 @@ public class StockArticulo {
 	
 	private String material;
 	
+    @ManyToOne
+    @JoinColumn(name = "id_articulo")
+    private Articulo articulo;
+	
 	public StockArticulo() {
 		
 	}	
@@ -68,6 +72,14 @@ public class StockArticulo {
 
 	public void setMaterial(String material) {
 		this.material = material;
+	}
+
+	public Articulo getArticulo() {
+		return articulo;
+	}
+
+	public void setArticulo(Articulo articulo) {
+		this.articulo = articulo;
 	}
 
 	@Override

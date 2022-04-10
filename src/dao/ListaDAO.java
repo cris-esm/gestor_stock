@@ -7,9 +7,9 @@ import entidades.Lista;
 public class ListaDAO extends GenericDAO{
 
 	public static List<Lista> obtenerTodos(){
-		SessionHandler.startSession();
-		List<Lista> objects = SessionHandler.getSession().createQuery("FROM Lista", Lista.class).list();
-		SessionHandler.closeSession();
+		SessionHandler.start();
+		List<Lista> objects = SessionHandler.get().createQuery("FROM Lista", Lista.class).list();
+		SessionHandler.close();
 		return objects;
 	}
 }

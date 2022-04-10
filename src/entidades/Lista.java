@@ -1,5 +1,8 @@
 package entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -11,14 +14,18 @@ public class Lista {
 	@Column(name = "id_lista")
 	private Integer id;
 	
-	private String nombre;
+	private String nombre;	
+
+    @OneToMany(mappedBy = "lista")
+    private List<Articulo> articulos;
 	
 	public Lista() {
-
+		articulos = new ArrayList<Articulo>();
 	}
 
 	public Lista(String nombre) {
 		this.nombre = nombre;
+		articulos = new ArrayList<Articulo>();
 	}
 
 	public Integer getId() {
@@ -35,6 +42,14 @@ public class Lista {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public List<Articulo> getArticulos() {
+		return articulos;
+	}
+
+	public void setArticulos(List<Articulo> articulos) {
+		this.articulos = articulos;
 	}
 
 	@Override

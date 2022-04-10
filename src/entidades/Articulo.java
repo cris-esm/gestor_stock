@@ -1,5 +1,8 @@
 package entidades;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,14 +16,22 @@ public class Articulo {
 	private String nombre;
 	
 	private String categoria;
+	
+    @ManyToOne
+    @JoinColumn(name = "id_lista")
+	private Lista lista;
+    
+    @OneToMany(mappedBy = "articulo")
+    private List<StockArticulo> stock;
 
 	public Articulo() {
-
+		stock = new ArrayList<StockArticulo>();
 	}
 
 	public Articulo(String nombre, String categoria) {
 		this.nombre = nombre;
 		this.categoria = categoria;
+		stock = new ArrayList<StockArticulo>();
 	}
 
 	public Integer getId() {
@@ -47,14 +58,29 @@ public class Articulo {
 		this.categoria = categoria;
 	}
 
+	public Lista getLista() {
+		return lista;
+	}
+
+	public void setLista(Lista lista) {
+		this.lista = lista;
+	}
+
+	public List<StockArticulo> getStock() {
+		return stock;
+	}
+
+	public void setStock(List<StockArticulo> stock) {
+		this.stock = stock;
+	}
+	
+	public void addStock(StockArticulo stock) {
+		this.stock.add(stock);
+	}
+
 	@Override
 	public String toString() {
 		return "Articulo [id=" + id + ", nombre=" + nombre + ", categoria=" + categoria + "]";
 	}
-	
-	
-	//private Integer idLista;
-	
-	
 	
 }
