@@ -1,26 +1,30 @@
-package entidades;
+package entities;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "stock_articulo")
+@Table(name = "STOCK_ARTICULO")
 public class StockArticulo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_stock")
+	@Column(name = "ID_STOCK")
 	private Integer id;
 	
+	@Column(name = "PRECIO")
 	private Double precio;
 	
+	@Column(name = "TALLE")
 	private String talle;
 	
+	@Column(name = "DISENIO")
 	private String disenio;
 	
+	@Column(name = "MATERIAL")
 	private String material;
 	
     @ManyToOne
-    @JoinColumn(name = "id_articulo")
+    @JoinColumn(name = "ID_ARTICULO")
     private Articulo articulo;
 	
 	public StockArticulo() {

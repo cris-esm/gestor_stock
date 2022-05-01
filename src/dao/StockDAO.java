@@ -2,7 +2,8 @@ package dao;
 
 import java.util.List;
 
-import entidades.StockArticulo;
+import dao.util.persistance.SessionHandler;
+import entities.StockArticulo;
 
 public class StockDAO extends GenericDAO {
 	

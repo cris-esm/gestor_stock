@@ -1,4 +1,4 @@
-package entidades;
+package entities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,31 +6,25 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "articulos")
+@Table(name = "ARTICULO")
 public class Articulo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_articulo")
+	@Column(name = "ID_ARTICULO")
 	private Integer id;
 	
+	@Column(name = "NOMBRE")
 	private String nombre;
-	
-	private String categoria;
-	
-    @ManyToOne
-    @JoinColumn(name = "id_lista")
-	private Lista lista;
     
-    @OneToMany(mappedBy = "articulo")
+    @OneToMany(mappedBy = "ARTICULO")
     private List<StockArticulo> stock;
 
 	public Articulo() {
 		stock = new ArrayList<StockArticulo>();
 	}
 
-	public Articulo(String nombre, String categoria) {
+	public Articulo(String nombre) {
 		this.nombre = nombre;
-		this.categoria = categoria;
 		stock = new ArrayList<StockArticulo>();
 	}
 
@@ -50,22 +44,6 @@ public class Articulo {
 		this.nombre = nombre;
 	}
 
-	public String getCategoria() {
-		return categoria;
-	}
-
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
-
-	public Lista getLista() {
-		return lista;
-	}
-
-	public void setLista(Lista lista) {
-		this.lista = lista;
-	}
-
 	public List<StockArticulo> getStock() {
 		return stock;
 	}
@@ -80,7 +58,7 @@ public class Articulo {
 
 	@Override
 	public String toString() {
-		return "Articulo [id=" + id + ", nombre=" + nombre + ", categoria=" + categoria + "]";
+		return "Articulo [id=" + id + ", nombre=" + nombre + "]";
 	}
 	
 }
