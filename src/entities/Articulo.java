@@ -6,17 +6,16 @@ import java.util.List;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "ARTICULO")
+@Table(name = "articulo")
 public class Articulo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_ARTICULO")
+	@Column(name = "id_articulo")
 	private Integer id;
 	
-	@Column(name = "NOMBRE")
 	private String nombre;
     
-    @OneToMany(mappedBy = "ARTICULO")
+    @OneToMany(mappedBy = "articulo")
     private List<StockArticulo> stock;
 
 	public Articulo() {

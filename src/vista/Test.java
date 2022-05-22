@@ -10,7 +10,7 @@ import entities.StockArticulo;
 public class Test {
 
 	public static void main(String[] args) throws Exception {
-		
+		/*
 		Articulo articulo1 = new Articulo();
 		articulo1.setNombre("Remera oferta");
 		
@@ -20,8 +20,10 @@ public class Test {
 		
 		StockDAO.guardar(stock1);
 		ArticuloDAO.guardar(articulo1);
+		*/
+		//ArticuloDAO.obtenerTodos().forEach(articulo -> System.out.println(articulo));
 		
-		ArticuloDAO.obtenerTodos().forEach(articulo -> System.out.println(articulo));
+		ArticuloDAO.obtenerPorNombre("Calza").forEach(articulo -> System.out.println(articulo));
 		
 	}
 }

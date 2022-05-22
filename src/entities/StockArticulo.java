@@ -3,28 +3,24 @@ package entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "STOCK_ARTICULO")
+@Table(name = "stock_articulo")
 public class StockArticulo {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID_STOCK")
+	@Column(name = "id_stock")
 	private Integer id;
 	
-	@Column(name = "PRECIO")
 	private Double precio;
 	
-	@Column(name = "TALLE")
 	private String talle;
 	
-	@Column(name = "DISENIO")
 	private String disenio;
 	
-	@Column(name = "MATERIAL")
 	private String material;
 	
     @ManyToOne
-    @JoinColumn(name = "ID_ARTICULO")
+    @JoinColumn(name = "id_articulo")
     private Articulo articulo;
 	
 	public StockArticulo() {

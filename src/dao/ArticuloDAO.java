@@ -15,7 +15,8 @@ public class ArticuloDAO extends GenericDAO {
 	
 	public static List<Articulo> obtenerTodos(){
 		SessionHandler.start();
-		List<Articulo> objects = SessionHandler.get().createQuery("from Articulo", Articulo.class).list();
+		List<Articulo> objects = SessionHandler.get().
+				createQuery("SELECT a FROM Articulo a", Articulo.class).list();
 		SessionHandler.close();
 		return objects;
 	}
@@ -26,7 +27,7 @@ public class ArticuloDAO extends GenericDAO {
 		CriteriaBuilder cb = SessionHandler.get().getCriteriaBuilder();
 		CriteriaQuery<Articulo> cr = cb.createQuery(Articulo.class);
 		Root<Articulo> root = cr.from(Articulo.class);
-		cr.select(root).where(cb.like(root.get("nombre"), "%"+nombre+"%"));
+		cr.select(root).where(cb.like(root.get("nombre"), nombre+"%"));
 		
 		Query<Articulo> query = SessionHandler.get().createQuery(cr);
 		List<Articulo> articulos = query.getResultList();

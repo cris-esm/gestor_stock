@@ -25,9 +25,8 @@
       </property>
       
       <!-- List of XML mapping files -->
-      <mapping class = "entidades.Articulo"/>
-	  <mapping class = "entidades.StockArticulo"/>
-      <mapping class = "entidades.Lista"/>
+      <mapping class = "entities.Articulo"/>
+	  <mapping class = "entities.StockArticulo"/>
 
    </session-factory>
 </hibernate-configuration>
